@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load humanize %}
+
+
+{% block content %}
+    <div class="container" style="padding: 150px 0;">
+        <div class="row">
+            <h3>Kişisel Bilgiler</h3>
+            <div class="col">
+                <div class="card" style="width: 100%;">
+                    
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            
+                            <div class="row">
+                                <div class="col mb-5">
+                                    <label for="exampleInput1" class="form-label">{% trans 'Ad' %}</label>
+                                    <input type="text" class="form-control" id="exampleInput1" aria-describedby="emailHelp" placeholder="Bir isim giriniz..." name="isim" required value="{{ profili.user.first_name|title }}">
+                                </div>
+
+                                <div class="col mb-5">
+                                    <label for="exampleInput2" class="form-label">{% trans 'Soyad' %}</label>
+                                    <input type="text" class="form-control" id="exampleInput2" aria-describedby="emailHelp" placeholder="Bir soyisim giriniz..." name="soyisim" required value="{{ profili.user.last_name|title }}">
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col mb-5">
+                                  <label for="exampleInput3" class="form-label">{% trans 'E-Posta Adresi' %}</label>
+                                  <input type="email" class="form-control" id="exampleInput3" aria-describedby="emailHelp" placeholder="Bir e-posta giriniz..." name="eposta" required value="{{ profili.user.email }}">
+                                </div>
+
+                                <div class="col mb-5">
+                                    <label for="exampleInput4" class="form-label">{% trans 'Telefon Numarası' %}</label>
+                                    <input type="text" class="form-control" id="exampleInput4" aria-describedby="emailHelp" placeholder="Bir telefon numarası giriniz..." name="telefon" required
+                                        {% if profili.phone_number %} 
+                                            value="{{ profili.phone_number }}"
+                                        {% else %}
+                                            value = ""
+                                        {% endif %}>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col mb-5">
+                                    <label for="exampleInput5" class="form-label">{% trans 'Doğum Tarihi' %}</label>
+                                    <input type="date" class="form-control" id="exampleInput5" aria-describedby="emailHelp" name="dogumtarihi" required value="{{ profili.birthdate|date:'Y-m-d' }}">
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary d-block ms-auto" name="btnsubmit" value="btnprofil">{% trans 'Güncelle' %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <h3>Adres Bilgileri</h3>
+            <div class="col">
+                <div class="card" style="width: 100%;">
+                    
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            
+                            <div class="row">
+                                <div class="col mb-5">
+                                    <label for="exampleInput6" class="form-label">{% trans 'İl' %}</label>
+                                    <input type="text" class="form-control" id="exampleInput6" aria-describedby="emailHelp" placeholder="Bir il giriniz..." name="il" required
+                                        {% if adresi.province %} 
+                                            value="{{ adresi.province|title }}"
+                                        {% else %}
+                                            value = ""
+                                        {% endif %}>
+                                </div>
+
+                                <div class="col mb-5">
+                                    <label for="exampleInput7" class="form-label">{% trans 'İlçe' %}</label>
+                                    <input type="text" class="form-control" id="exampleInput7" aria-describedby="emailHelp" placeholder="Bir ilçe giriniz..." name="ilçe" required
+                                        {% if adresi.district %} 
+                                            value="{{ adresi.district|title }}"
+                                        {% else %}
+                                            value = ""
+                                        {% endif %}>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col mb-5">
+                                  <label for="exampleInput8" class="form-label">{% trans 'Mahalle' %}</label>
+                                  <input type="text" class="form-control" id="exampleInput8" aria-describedby="emailHelp" placeholder="Bir mahalle giriniz..." name="mahalle" required
+                                      {% if adresi.neighbourhood %} 
+                                          value="{{ adresi.neighbourhood|title }}"
+                                      {% else %}
+                                          value = ""
+                                      {% endif %}>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col mb-5">
+                                    <label for="exampleInput9" class="form-label">{% trans 'Adres' %}</label>
+                                    <textarea class="form-control" id="exampleInput9" aria-describedby="emailHelp" cols="10" rows="3" name="adres" maxlength="300">{% if adresi.address %} {{ adresi.address|title }} {% endif %}</textarea>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary d-block ms-auto" name="btnsubmit" value="btnadres">{% trans 'Güncelle' %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <h3>Şifre Değiştir</h3>
+            <div class="col">
+                <div class="card" style="width: 100%;">
+                    
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            
+                            <div class="row">
+                                <div class="mb-3">
+                                    <label for="exampleInput10" class="form-label">{% trans 'Eski Şifre' %}</label>
+                                    <input type="password" class="form-control" id="exampleInput10" aria-describedby="emailHelp" placeholder="Eski şifrenizi giriniz..." name="eskisifre">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInput11" class="form-label">{% trans 'Yeni Şifre' %}</label>
+                                    <input type="password" class="form-control" id="exampleInput11" aria-describedby="emailHelp" placeholder="Yeni şifrenizi giriniz..." name="yenisifre">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInput12" class="form-label">{% trans 'Yeni Şifre(Tekrar)' %}</label>
+                                    <input type="password" class="form-control" id="exampleInput12" aria-describedby="emailHelp" placeholder="Yeni şifrenizi tekrar giriniz..." name="yenisifretekrar">
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary d-block ms-auto" name="btnsubmit" value="btnsifre">{% trans 'Güncelle' %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

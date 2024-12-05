@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load humanize %}
+{% load tz %}
+
+
+{% block content %}
+    
+    <div class="container" style="padding: 150px 0;">
+        <div class="row">
+            <div class="col-5">
+                <div class="card" style="width: 100%;">
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="card" style="width: 100%;">
+                    <div class="card-body">
+                      <h3 class="card-title">Marka : {{ product.brand }}</h3>
+                      <h5 class="card-text">Model : {{ product.model }}</h5>
+                      <h5 class="card-text">Fiyat : {{ product.price }}</h5>
+                      <h5 class="card-text">Kasa Şekli : {{ product.case_shape }}</h5>
+                      <h5 class="card-text">Renk : {{ product.color }}</h5>
+                      <h5 class="card-text">Cinsiyet : {{ product.gender }}</h5>
+                      <h5 class="card-text">Cam Özelliği : {{ product.glass_feature }}</h5>
+                      <h5 class="card-text">Kayış Tipi : {{ product.strap_type }}</h5>
+                      <h5 class="card-text">Mekanizması : {{ product.mechanism }}</h5>
+                      <p class="card-text text-dark">Açıklama : {{ product.description }}</p>
+                      
+                      <form method="POST"> 
+                        {% csrf_token %}
+                            <div class="d-flex mb-5">
+                                <p class="me-3">Adet: </p>
+                                <button type="button" class="btn btn-primary me-1" id="minus"> - </button>
+                                <input type="number" class="form-control w-25 me-1" name="miktar" value= "1" id="quantity" required min="1" max="1000">
+                                <button type="button" class="btn btn-primary" id="plus"> + </button>
+                            </div>
+                                <input type="hidden" value="{{ product.id }}" name="urun_id">
+                                <button type="submit" class="btn btn-primary" name="btnsubmit" value="btnsepet">{% trans "Sepete Ekle" %}</button>
+                      </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                <form method="POST">
+                    {% csrf_token %}
+                    <section style="background-color: #eee;">
+                        <div class="container my-5 py-5">
+                          <div class="row d-flex justify-content-center">
+                            <div class="col-md-12 col-lg-10 col-xl-8">
+                              <div class="card">
+
+                                {% for com in comments %}
+
+                                    <div class="card-body position-relative">
+                                      <div class="d-flex flex-start align-items-center">
+                                        <div>
+                                          <h6 class="fw-bold text-danger mb-2">{{ com.first_name }} {{ com.last_name }} - {{ com.user.username }}</h6>
+                                          <p class="text-dark small mb-0">
+                                            {{ com.created_date|localtime|date:"d M Y H:i" }}
+                                          </p>
+                                        </div>
+                                      </div>
+                                  
+                                      <p class="text-dark mt-3 mb-4 pb-2">
+                                         {{ com.comment }}
+                                      </p>
+
+                                      {% if com.user == request.user %}
+                                        
+                                            <input type="hidden" name="yorum_id" value="{{ com.id }}">
+                                            <button type="submit" class="btn btn-danger btn-sm" name="btnsubmit" value="btnyorumsil">
+                                                <i class="fa-solid fa-trash me-1"></i> Sil
+                                            </button>
+                                    
+                                      {% endif %}
+
+                                      
+                                      {% if com.user == request.user %}
+                                        
+                                            <!-- Button trigger modal -->
+
+                                            <button type="button" class="btn btn-primary position-absolute bottom-1 end-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <i class="fa-solid fa-pencil me-1"></i> Düzenle
+                                            </button>
+
+                                            <!-- Modal -->
+
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Yorum Düzenle</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="card-footer py-3 border-top-1 mt-3" style="background-color: #f8f9fa;">
+                                                            <div class="d-flex flex-start w-100">
+                                                                <div data-mdb-input-init class="form-outline w-100">
+                                                                    <textarea class="form-control" id="textAreaExample" rows="4"
+                                                                        style="background: #fff;" name="yorum" required>{{ com.comment }}</textarea>
+                                                                    <label class="form-label" for="textAreaExample">{% trans "Yorum Yaz" %}</label>
+                                                                </div>
+                                                            </div>
+                                                        
+                                                        <div class="float-end mt-3 pt-2">
+                                                            <input type="hidden" name="yorum_id" value="{{ com.id }}">
+                                                            <button type="submit" class="btn btn-primary btn-sm" name="btnsubmit" value="btnyorumgüncelle">{% trans "Yorum Güncelle" %}</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                </div>
+                                            </div>
+
+                                      {% endif %}
+                                    
+                                    </div>
+
+                                {% endfor %}
+
+
+                                {% if yorum_user is None %}
+
+                                    <div class="card-footer py-3 border-top-1 mt-3" style="background-color: #f8f9fa;">
+                                        <div class="d-flex flex-start w-100">
+                                            <div data-mdb-input-init class="form-outline w-100">
+                                                <textarea class="form-control" id="textAreaExample" rows="4"
+                                                    style="background: #fff;" name="yorum" required></textarea>
+                                                <label class="form-label" for="textAreaExample">{% trans "Yorum Yaz" %}</label>
+                                            </div>
+                                        </div>
+                                
+                                    <div class="float-end mt-2 pt-1">
+                                        <button type="submit" class="btn btn-primary btn-sm" name="btnsubmit" value="btnyorum">{% trans "Yorum Yap" %}</button>
+                                    </div>
+                                
+                                {% endif %}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+
+{% block extrajs %}
+    
+    <script>
+        var eksi = document.getElementById("minus")
+        var artı = document.getElementById("plus")
+        var adet = document.getElementById("quantity")
+        
+        
+        checkQuantity();
+        
+        
+        eksi.addEventListener("click", function(){
+            
+            adet.value = parseInt(adet.value) - 1;
+            
+            checkQuantity();
+        });
+        
+        
+        artı.addEventListener("click", function(){
+            
+            adet.value = parseInt(adet.value) + 1;
+            
+            checkQuantity();
+        });
+
+
+        function checkQuantity() {
+            var simdikiDeger = parseInt(adet.value);
+            if (simdikiDeger <= 1) {
+                eksi.disabled = true;
+                }
+            else {
+                eksi.disabled = false;
+            }
+        }
+    </script>
+
+{% endblock extrajs %}

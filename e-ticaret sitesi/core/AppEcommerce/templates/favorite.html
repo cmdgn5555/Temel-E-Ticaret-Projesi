@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load humanize %}
+
+
+
+{% block content %}
+<div class="container" style="padding: 250px 0"> 
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <h1 class="text-center mb-5">FAVORİLERİM</h1><hr>
+                
+                {% for urun in favorites %}
+                    <div class="col-4">
+                        <div class="card" style="width: 100%;">
+                            <img src="{{ urun.product.image.url }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ urun.product.brand }}</h5>
+                                <p class="card-text text-dark">{{ urun.product.model }}</p>
+                                <p class="card-text text-dark">{{ urun.product.price|intcomma }} TL </p>
+                                <div class="d-flex justify-content-between">
+                                    <a href="{% url 'ürün-detayi' urun.product.id %}" class="btn btn-primary btn-sm me-2">{% trans "Detaya Git" %}</a>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" value="{{ urun.product.id }}" name="urun_id">
+                                        <button type="submit" class="btn btn-primary">{% trans "Sepete Ekle" %}</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,167 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-31 20:19+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\AppEcommerce\templates\index.html:16
+msgid "Ürünleriniz Harika."
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:17
+#: .\AppEcommerce\templates\index.html:34
+msgid "Ürün Alışverişi"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:33
+msgid "Alamayacağınız Teknoloji Hack'i"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:70
+msgid "Ücretsiz Teslimat"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:83
+msgid "Kalite garantisi"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:96
+msgid "Günlük Teklifler"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:109
+#, python-format
+msgid "100%% Güvenli Ödeme"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:122
+msgid "Mobil Ürünler"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:124
+msgid "Tüm Mobil Ürünler"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:136
+#: .\AppEcommerce\templates\index.html:154
+#: .\AppEcommerce\templates\index.html:172
+#: .\AppEcommerce\templates\index.html:190
+#: .\AppEcommerce\templates\index.html:208
+#: .\AppEcommerce\templates\index.html:244
+#: .\AppEcommerce\templates\index.html:262
+#: .\AppEcommerce\templates\index.html:280
+#: .\AppEcommerce\templates\index.html:298
+#: .\AppEcommerce\templates\index.html:316
+msgid "Sepete Ekle"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:230
+msgid "Akıllı Saatler"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:232
+msgid "Mağazaya Git"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:249
+msgid "Pembe Saat"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:267
+msgid "Ağır Saat"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:285
+msgid "Benekli Saat"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:303
+#: .\AppEcommerce\templates\index.html:321
+msgid "Siyah Saat"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:338
+#, python-format
+msgid "10%% indirim"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:339
+msgid "YENİ YIL SATIŞI"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:340
+msgid "Mağaza Satışı"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:353
+msgid "SON GÖNDERİLER"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:355
+msgid "BLOGU OKU"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:367
+#: .\AppEcommerce\templates\index.html:399
+msgid "ŞUB 22, 2023"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:368
+msgid "ELEKTRİKLİ ALETLER"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:371
+msgid "2023'TE HARİKA ELEKTRİKLİ ALETLER EDİNİN"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:383
+msgid "ŞUB 25, 2023"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:384
+msgid "TEKNOLOJİ"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:387
+msgid "ALAMAYACAĞINIZ TEKNOLOJİ HACK'İ"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:400
+msgid "KAMERA"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:403
+msgid "DÜNYANIN EN İYİ 10 KÜÇÜK KAMERASI"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:499
+msgid "ŞİMDİ BİZE ABONE OLUN"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:500
+msgid ""
+"Doğrudan gelen kutunuza gönderilen en son haberleri, güncellemeleri ve "
+"fırsatları alın."
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:507
+msgid "ABONE OL"
+msgstr ""
+
+#: .\AppEcommerce\templates\index.html:520
+msgid "INSTAGRAM'DA ALIŞVERİŞ YAPIN"
+msgstr ""

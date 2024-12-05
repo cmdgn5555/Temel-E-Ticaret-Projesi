@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block content %}
+    <div class="container" style="padding: 250px 0;">
+        <div class="row">
+            <h1 class="text-center">{% trans 'KAYIT OL' %}</h1>
+            <form method="POST" class="d-flex justify-content-center">
+                {% csrf_token %}
+                <div class="col-9">
+                    
+                    <div class="mb-4">
+                        <label for="ad" class="form-label">{% trans 'Ad' %}</label>
+                        <input type="text" name="firstname" class="form-control" id="ad" placeholder="Adınız..." required  value="{{ f_name }}">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="soyad" class="form-label">{% trans 'Soyad' %}</label>
+                        <input type="text" name="lastname" class="form-control" id="soyad" placeholder="Soyadınız..." required  value="{{ l_name }}">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="eposta" class="form-label">{% trans 'E-Posta Adresi' %}</label>
+                        <input type="email" name="email" class="form-control" id="eposta" placeholder="name@example.com" required  value="{{ mail }}">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="sifre" class="form-label">{% trans 'Şifre' %}</label>
+                        <input type="password" name="password" class="form-control" id="sifre" placeholder="Şifreniz..." required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="sifretekrar" class="form-label">{% trans 'Şifre Tekrar' %}</label>
+                        <input type="password" name="re_password" class="form-control" id="sifretekrar" placeholder="Şifrenizi tekrar giriniz..." required>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="submit" class="btn btn-primary">{% trans 'Kayıt Ol' %}</button>
+                        <button type="reset" class="btn btn-secondary">{% trans 'Sıfırla' %}</button>
+                    </div>
+                
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

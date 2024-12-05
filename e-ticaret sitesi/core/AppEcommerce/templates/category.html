@@ -1,0 +1,409 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load humanize %}
+
+
+{% block content %}
+
+  <div class="container" style="padding: 250px 0"> 
+    <div class="row">
+      
+      <div class="col-3">
+                <form method="GET">
+                  <div class="accordion" id="accordionPanelsStayOpenExample">
+                    
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                          {% trans "Markalar" %}
+                        </button>
+                      </h2>
+                      
+                      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            {% for marka in brands %}
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="{{ marka.brand }}" id="flexCheckDefault" name="markasi">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        {{ marka.brand }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                          {% trans "Renkler" %}
+                        </button>
+                      </h2>
+                      
+                      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            {% for renk in colors %}
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="{{ renk.color }}" id="flexCheckDefault" name="rengi">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        {{ renk.color }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                          {% trans "Kasa Şekilleri" %}
+                        </button>
+                      </h2>
+                      
+                      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            {% for kasa_sekli in case_shapes %}
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="{{ kasa_sekli.case_shape }}" id="flexCheckDefault" name="kasanin_sekli">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        {{ kasa_sekli.case_shape }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                            {% trans "Kayış Tipleri" %}
+                          </button>
+                        </h2>
+                        
+                        <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
+                          <div class="accordion-body">
+                              {% for kayis_tipi in strap_types %}
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="{{ kayis_tipi.strap_type }}" id="flexCheckDefault" name="kayisin_tipi">
+                                      <label class="form-check-label" for="flexCheckDefault">
+                                          {{ kayis_tipi.strap_type }}
+                                      </label>
+                                  </div>
+                              {% endfor %}
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
+                            {% trans "Cam Özellikleri" %}
+                          </button>
+                        </h2>
+                        
+                        <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse">
+                          <div class="accordion-body">
+                              {% for cam_ozellik in glass_features %}
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="{{ cam_ozellik.glass_feature }}" id="flexCheckDefault" name="camin_ozelligi">
+                                      <label class="form-check-label" for="flexCheckDefault">
+                                          {{ cam_ozellik.glass_feature }}
+                                      </label>
+                                  </div>
+                              {% endfor %}
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
+                            {% trans "Tarzlar" %}
+                          </button>
+                        </h2>
+                        
+                        <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse">
+                          <div class="accordion-body">
+                              {% for tarz in styles %}
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="{{ tarz.style }}" id="flexCheckDefault" name="tarzi">
+                                      <label class="form-check-label" for="flexCheckDefault">
+                                          {{ tarz.style }}
+                                      </label>
+                                  </div>
+                              {% endfor %}
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">
+                            {% trans "Mekanizmalar" %}
+                          </button>
+                        </h2>
+                        
+                        <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse">
+                          <div class="accordion-body">
+                              {% for mekanizma in mechanisms %}
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="{{ mekanizma.mechanism }}" id="flexCheckDefault" name="mekanizmasi">
+                                      <label class="form-check-label" for="flexCheckDefault">
+                                          {{ mekanizma.mechanism }}
+                                      </label>
+                                  </div>
+                              {% endfor %}
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false" aria-controls="panelsStayOpen-collapseEight">
+                            {% trans "Fiyat" %}
+                          </button>
+                        </h2>
+                          
+                        <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse">
+                            <div class="accordion-body d-flex justify-content-center align-items-center">
+                                <div>
+                                  <input class="form-control" type="number" min="0" max="1000000000" name="fiyat_min" step="0.01" id="flexCheckDefaultMin" placeholder="min...">
+                                </div>
+                                <p class="fs-2"> - </p>
+                                <div>
+                                  <input class="form-control" type="number" min="0" max="1000000000" name="fiyat_max" step="0.01" id="flexCheckDefaultMax" placeholder="max...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                    <button type="submit" class="btn btn-primary d-block w-100 mt-2">Filtrele</button>
+                    <a href="{% url 'kategori' %}" class="btn btn-danger d-block w-100 mt-2">Temizle</a>
+                </form>
+            </div>
+            
+            
+            <div class="col-9">
+                <div class="row">
+                    {% for urun in products %}
+                        <div class="col-4">
+                            <div class="card position-relative" style="width: 100%;">
+                                <img src="{{ urun.image.url }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ urun.brand }}</h5>
+                                    <p class="card-text text-dark">{{ urun.model }}</p>
+                                    <p class="card-text text-dark">{{ urun.price|intcomma }} TL </p>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="{% url 'ürün-detayi' urun.id %}" class="btn btn-primary btn-sm me-2">{% trans "Detaya Git" %}</a>
+                                        <form method="POST">
+                                          {% csrf_token %}
+                                          <input type="hidden" value="{{ urun.id }}" name="urun_id">
+                                          
+                                          <button type="submit" class="position-absolute top-0 end-0" name="btnsubmit" value="btnfavori">
+                                            
+                                            <i class="
+                                                {% if favorite_products %}
+                                                    
+                                                    {% for fav in favorite_products %}
+
+                                                        {% if fav.product == urun and fav.user == request.user %}
+                                                            fa-solid fa-heart fs-6
+                                                        {% else %}
+                                                            fa-regular fa-heart
+                                                        {% endif %}
+                                                    
+                                                    {% endfor %}
+
+                                                {% else %}
+                                                    fa-regular fa-heart fs-6
+                                                {% endif %}
+                                              ">
+                                            </i>
+                                          
+                                          </button>
+                                          
+                                          <button type="submit" class="btn btn-primary" name="btnsubmit" value="btnsepet">{% trans "Sepete Ekle" %}</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Pagination -->
+                <div class="row">
+                  <nav aria-label="..." class="d-flex justify-content-center mt-5">
+                      <ul class="pagination">
+                        
+                        {% if products.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ products.previous_page_number }}">{% trans 'Geri' %}</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="?page={{ products.number|add:'-1' }}">{{ products.number|add:'-1' }}</a></li>
+                        {% endif %}
+                          
+                          <li class="page-item active" aria-current="page">
+                              <a class="page-link" href="?page={{ products.number }}">{{ products.number }}</a> 
+                          </li>
+                        
+                        {% if products.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{ products.number|add:'1' }}">{{ products.number|add:'1'}}</a></li>  
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ products.next_page_number }}">{% trans 'İleri' %}</a>
+                            </li>
+                        {% endif %}
+                      </ul>
+                  </nav>
+                </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+
+
+{% block extrajs %}
+    
+  <script>
+      
+      
+    //marka filtresi
+    
+    $(document).ready(function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      
+    const selectedMarkaId = urlParams.getAll('markasi');
+    
+    if (selectedMarkaId.length > 0) {
+       $.each(selectedMarkaId, function (index, marka) { 
+        const checkboxInput = $(`input[name="markasi"][value="${marka}"]`);
+        
+        if (checkboxInput.length > 0) {
+          checkboxInput.prop("checked", true)
+          }
+        })
+      }
+    });
+
+      
+      
+      
+    // fiyat filtresi
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedMinFiyat = urlParams.get('fiyat_min');
+    const selectedMaxFiyat = urlParams.get('fiyat_max');
+    document.getElementById('flexCheckDefaultMin').value = selectedMinFiyat;
+    document.getElementById('flexCheckDefaultMax').value = selectedMaxFiyat;
+
+
+
+
+    // renk filtresi
+    
+    const selectedRenkId = urlParams.getAll('rengi');
+    
+    if (selectedRenkId.length > 0) {
+       $.each(selectedRenkId, function (index, renk) { 
+        const checkboxInput = $(`input[name="rengi"][value="${renk}"]`);
+        
+        if (checkboxInput.length > 0) {
+          checkboxInput.prop("checked", true)
+          }
+        })
+      };
+    
+
+
+
+    // kasa şekli filtresi
+    
+    const selectedKasaSekliId = urlParams.getAll('kasanin_sekli');
+    
+    if (selectedKasaSekliId.length > 0) {
+       $.each(selectedKasaSekliId, function (index, kasa_sekli) { 
+        const checkboxInput = $(`input[name="kasanin_sekli"][value="${kasa_sekli}"]`);
+        
+        if (checkboxInput.length > 0) {
+          checkboxInput.prop("checked", true)
+          }
+        })
+      };
+    
+    
+    
+    
+    // kayış tipi filtresi
+    
+    const selectedKayisTipiId = urlParams.getAll('kayisin_tipi');
+    
+    if (selectedKayisTipiId.length > 0) {
+       $.each(selectedKayisTipiId, function (index, kayis_tipi) { 
+        const checkboxInput = $(`input[name="kayisin_tipi"][value="${kayis_tipi}"]`);
+        
+        if (checkboxInput.length > 0) {
+          checkboxInput.prop("checked", true)
+          }
+        })
+      };
+    
+    
+    
+    
+    // cam özellik filtresi
+    
+    const selectedCamOzellikId = urlParams.getAll('camin_ozelligi');
+    
+    if (selectedCamOzellikId.length > 0) {
+       $.each(selectedCamOzellikId, function (index, cam_ozellik) { 
+        const checkboxInput = $(`input[name="camin_ozelligi"][value="${cam_ozellik}"]`);
+        
+        if (checkboxInput.length > 0) {
+          checkboxInput.prop("checked", true)
+          }
+        })
+      };
+    
+
+
+
+    // tarz filtresi
+    
+    const selectedTarzId = urlParams.getAll('tarzi');
+    
+    if (selectedTarzId.length > 0) {
+       $.each(selectedTarzId, function (index, tarz) { 
+        const checkboxInput = $(`input[name="tarzi"][value="${tarz}"]`);
+        
+        if (checkboxInput.length > 0) {
+          checkboxInput.prop("checked", true)
+          }
+        })
+      };
+    
+
+
+
+    // mekanizma filtresi
+    
+    const selectedMekanizmaId = urlParams.getAll('mekanizmasi');
+    
+    if (selectedMekanizmaId.length > 0) {
+       $.each(selectedMekanizmaId, function (index, mekanizma) { 
+        const checkboxInput = $(`input[name="mekanizmasi"][value="${mekanizma}"]`);
+        
+        if (checkboxInput.length > 0) {
+          checkboxInput.prop("checked", true)
+          }
+        })
+      };
+      
+
+  </script>
+
+{% endblock extrajs %}
